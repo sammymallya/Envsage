@@ -1,65 +1,85 @@
-body{
-    background-color: black;
+body {
+  background-color: black;
 }
-.overlay{
-    position: relative; /* or absolute */
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 90vw;
-    min-height: 100vh;
-    margin:0 auto;
-    background: #18181B; /* semi-transparent white */
-    z-index: 10;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+.overlay {
+  position: relative; /* or absolute */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 90vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #18181b; /* semi-transparent white */
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 #content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* ensures content starts at the top */
-    align-items: stretch;
-    padding: 2rem;
-    max-width: 1300px;
-    width: 100%;
-    color: white;
-    /* Remove any vertical centering if present */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ensures content starts at the top */
+  align-items: stretch;
+  padding: 2rem;
+  max-width: 1300px;
+  width: 100%;
+  color: white;
+  /* Remove any vertical centering if present */
 }
+
+/* Add a grid container for cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 120px;
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .content-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 200px;
 }
-#profile-pic
-{
-    height: 100px;
-    width: 100px;
-    border-radius: 100px;
-    object-fit:fill;
-    object-position: center;
+#profile-pic {
+  margin-top: 20px;
+  height: 80px;
+  width: 80px;
+  border-radius: 100px;
+  object-fit: fill;
+  object-position: center;
 }
 #theme-toggle {
-    background: white;
-    border: none;
-    height: 50px;
-    width: 50px;
-    border-radius: 100px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+  background: white;
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
-#theme-toggle svg
-{
-    width: 32px;
-    height: 32px;
-
+#theme-toggle svg {
+  width: 32px;
+  height: 32px;
 }
 @import "https://unpkg.com/open-props/easings.min.css";
 
@@ -96,10 +116,10 @@ body{
   transform: translateX(-7px);
 }
 [data-theme="dark"] .icons svg {
-    color: white;
+  color: white;
 }
 [data-theme="dark"] .card svg {
-    color: black;
+  color: black;
 }
 
 @supports (cx: 1) {
@@ -114,188 +134,373 @@ body{
     background-color: black;
   }
   [data-theme="light"] body {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
   }
   [data-theme="dark"] body {
     background-color: black;
   }
   .sun-and-moon > .sun {
-    transition: transform .5s var(--ease-elastic-3);
+    transition: transform 0.5s var(--ease-elastic-3);
   }
 
   .sun-and-moon > .sun-beams {
-    transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3);
+    transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
   }
 
   .sun-and-moon .moon > circle {
-    transition: transform .25s var(--ease-out-5);
+    transition: transform 0.25s var(--ease-out-5);
   }
 
   @supports (cx: 1) {
     .sun-and-moon .moon > circle {
-      transition: cx .25s var(--ease-out-5);
+      transition: cx 0.25s var(--ease-out-5);
     }
   }
 
   [data-theme="dark"] .sun-and-moon > .sun {
     transition-timing-function: var(--ease-3);
-    transition-duration: .25s;
+    transition-duration: 0.25s;
     transform: scale(1.75);
   }
 
   [data-theme="dark"] .sun-and-moon > .sun-beams {
-    transition-duration: .15s;
+    transition-duration: 0.15s;
     transform: rotateZ(-25deg);
   }
 
   [data-theme="dark"] .sun-and-moon > .moon > circle {
-    transition-duration: .5s;
-    transition-delay: .25s;
+    transition-duration: 0.5s;
+    transition-delay: 0.25s;
   }
   /* [data-theme="light"] body {
     background-color: #FAFAFA;
 }
  */
-[data-theme="light"] .overlay {
-    background: #FFFFFF;
-}
+  [data-theme="light"] .overlay {
+    background: #ffffff;
+  }
 
-[data-theme="light"] #content {
-    color: #18181B;
-}
-[data-theme="light"] a {
+  [data-theme="light"] #content {
+    color: #18181b;
+  }
+  [data-theme="light"] a {
     color: blueviolet;
-}
-[data-theme="light"] svg {
+  }
+  [data-theme="light"] svg {
     color: black;
+  }
 }
+.theme-icon theme-icon-dark {
+  color: black;
+}
+#quote {
+  font-size: 3em;
+  font-weight: bolder;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  width: max-content;
+  max-width: 1000px;
+  /* text-align: center; */
+}
+#intro {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-optical-sizing: auto;
+  font-size: 1.2em;
+  line-height: 1.6;
+  font-weight: bold;
+  max-width: 800px;
+  padding-left: 10px;
+  /* text-align: center; */
+}
+.rainbow-text {
+  
+  background-image: linear-gradient(to right, #14b8a6, #a855f7, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text; /* For older browsers */
+
+  color: transparent;
+  -webkit-text-fill-color: transparent; /* For older browsers */
 }
 
-#quote
-{   font-size: 3em;
-    font-weight:bolder;
-    font-family: "Karla", sans-serif;
-    width:max-content;
-    max-width: 800px;
-    
+/* Dark mode variant */
+/* This media query detects if the user's system prefers a dark color scheme */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a202c; /* Dark background */
+  }
+
+  .rainbow-text {
+    background-image: linear-gradient(to right, #2dd4bf, #c084fc, #f472b6);
+  }
 }
-#intro{
-    font-family: "Karla", sans-serif;
-    font-optical-sizing: auto;
-    font-size :1.2em;
-    line-height: 1.6;
-    font-weight: bold;
-    max-width: 800px;
-    padding-left: 50px;
-    ;
-}
-a{
-    color: lightblue;
+a {
+  color: lightblue;
 }
 
 .icons {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;           /* Equal spacing between icons */
-    align-items: center;
-    margin-top: 1rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem; /* Equal spacing between icons */
+  align-items: center;
+  margin-top: 1rem;
 }
-.icons svg
-{
-    
-    width: 32px;
-    height: 32px;
-    fill: currentColor;
-    transition: fill 0.2s;
-    display:block;
+.icons svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  transition: fill 0.2s;
+  display: block;
 }
 
-.card 
-{
-    /* background-color: #FAFAFA; White background for the card */
-    border-radius: 5rem; /* Large rounded corners */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Subtle, larger shadow */
-    padding: 1.5rem; /* Internal padding */
-    display: flex;
-    flex-direction: column;
-    width: 100%; /* Full width on small screens */
-    max-width: 380px; /* Max width for desktop */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.618);
+  }
+  50% {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.597);
+  }
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.624);
+  }
 }
 
+.card {
+  /* background-color: #FAFAFA; White background for the card */
+  border-radius: 5rem; /* Large rounded corners */
+  border: 2px solid #00e0ff;
+  padding: 1.5rem; /* Internal padding */
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Full width on small screens */
+  max-width: none;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 40px rgba(0, 255, 255, 0.7),
+  0 0 60px rgba(0, 255, 255, 0.7);
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Keep the hover effect for a more pronounced lift */
 .card:hover {
-    transform: translateY(-5px); /* Subtle lift effect on hover */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow on hover */
+  transform: translateY(-20px) scale(1.03);
+  box-shadow:
+    0 0 16px #00e0ff,
+    0 0 32px #00e0ff,
+    0 25px 45px rgba(0, 0, 0, 0.15);
+  animation-play-state:running;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.9), 0 0 60px rgba(0, 255, 255, 0.9),
+  0 0 90px rgba(0, 255, 255, 0.9);
 }
 
 .icon-container {
-    width: 3rem; /* 48px */
-    height: 3rem; /* 48px */
-    border-radius: 9999px; /* Fully rounded for a circle */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0; /* Prevent icon from shrinking */
-    margin-bottom: 1.25rem; /* Space below the icon */
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  border-radius: 9999px; /* Fully rounded for a circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  margin-bottom: 1.25rem; /* Space below the icon */
 }
 
 /* Placeholder for actual SVG icons if needed */
 .icon-container svg {
-    width: 2rem; /* 32px */
-    height: 2rem; /* 32px */
-    fill: currentColor; /* Allows color to be controlled by parent's text color */
+  width: 2rem; /* 32px */
+  height: 2rem; /* 32px */
+  fill: currentColor; /* Allows color to be controlled by parent's text color */
 }
 
 .card-title {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 600; /* font-semibold */
-    color: #1a202c; /* gray-900 */
-    margin-bottom: 0.5rem; /* Space below title */
-    line-height: 1.4; /* Adjusted line height for title */
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: #1a202c; /* gray-900 */
+  margin-bottom: 0.5rem; /* Space below title */
+  line-height: 1.4; /* Adjusted line height for title */
 }
 
 .card-description {
-    font-size: 0.9375rem; /* Slightly larger than text-sm */
-    color: #4a5568; /* gray-600 */
-    line-height: 1.6; /* More relaxed line height */
-    margin-bottom: 1.5rem; /* Space below description */
-    flex-grow: 1; /* Allows description to take up available space */
+  font-size: 0.9375rem; /* Slightly larger than text-sm */
+  color: #4a5568; /* gray-600 */
+  line-height: 1.6; /* More relaxed line height */
+  margin-bottom: 1.5rem; /* Space below description */
+  flex-grow: 1; /* Allows description to take up available space */
 }
 
 .card-link {
-    font-size: 0.9375rem;
-    color: #3b82f6; /* blue-500 */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* Space between link text and icon */
-    text-decoration: none;
-    font-weight: 500; /* Medium font weight */
-    transition: color 0.2s ease-in-out;
+  font-size: 0.9375rem;
+  color: #3b82f6; /* blue-500 */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between link text and icon */
+  text-decoration: none;
+  font-weight: 500; /* Medium font weight */
+  transition: color 0.2s ease-in-out;
 }
 
 .card-link:hover {
-    color: #2563eb; /* Darker blue on hover */
-    text-decoration: underline;
+  color: #2563eb; /* Darker blue on hover */
+  text-decoration: underline;
 }
 
 .link-icon {
-    /* Placeholder for the link icon (e.g., chain link SVG) */
-    width: 1rem; /* 16px */
-    height: 1rem; /* 16px */
-    fill: currentColor; /* Inherit color from parent link */
-    flex-shrink: 0;
+  /* Placeholder for the link icon (e.g., chain link SVG) */
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
+  fill: currentColor; /* Inherit color from parent link */
+  flex-shrink: 0;
 }
 
-/* Responsive adjustments */
-@media (min-width: 640px) { /* sm breakpoint */
-    .card {
-        width: calc(50% - 16px); /* Two cards per row with gap */
-    }
+#theme-toggle .theme-icon-dark {
+  display: none;
+}
+#theme-toggle .theme-icon-light {
+  display: inline;
+}
+[data-theme="dark"] #theme-toggle .theme-icon-dark {
+  display: inline;
+}
+[data-theme="dark"] #theme-toggle .theme-icon-light {
+  display: none;
 }
 
-@media (min-width: 1024px) { /* lg breakpoint */
-    .card {
-        width: calc(33.333% - 21.333px); /* Three cards per row with gap */
-    }
+.blog-grid {
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    flex: 2 1 0;
+    /* Remove min-width if you want it to shrink on smaller screens */
+}
+.blog
+{   
+    padding: 20px;
+    max-width: 900px;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+;
+}
+.blog:hover{
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #242428;
+}
+.blog h4{
+    font-size: 2rem;
+}
+.blog p{
+    font-size: 1rem;
+}
+.resumes {
+  background: #18181b;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  min-width: 340px;
+  max-width: 370px;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.work-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 0.5rem;
+}
+
+.work-icon {
+  color: #bdbdbd;
+}
+
+.work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.work-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.2rem 0;
+}
+
+.work-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #23232a;
+  object-fit: contain;
+  border: 1.5px solid #23232a;
+  box-shadow: 0 0 8px #23232a44;
+}
+
+.work-details {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.work-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #fff;
+  margin-bottom: 0.1rem;
+}
+
+.work-role {
+  font-size: 0.97rem;
+  color: #bdbdbd;
+}
+
+.work-dates {
+  font-size: 0.93rem;
+  color: #bdbdbd;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+.resume-download-btn {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #23232a;
+  color: #f3f3f3;
+  border-radius: 10px;
+  padding: 0.7rem 0;
+  font-size: 1.08rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 8px #00000022;
+  letter-spacing: 0.01em;
+  gap: 0.5rem;
+}
+
+.resume-download-btn:hover {
+  background: #00e0ff;
+  color: #18181b;
+  text-decoration: none;
+}
+
+.arrow-down {
+  font-size: 1.2em;
+  margin-left: 0.3em;
 }
