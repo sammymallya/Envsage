@@ -1,0 +1,301 @@
+body{
+    background-color: black;
+}
+.overlay{
+    position: relative; /* or absolute */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 90vw;
+    min-height: 100vh;
+    margin:0 auto;
+    background: #18181B; /* semi-transparent white */
+    z-index: 10;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* ensures content starts at the top */
+    align-items: stretch;
+    padding: 2rem;
+    max-width: 1300px;
+    width: 100%;
+    color: white;
+    /* Remove any vertical centering if present */
+}
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 200px;
+}
+#profile-pic
+{
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    object-fit:fill;
+    object-position: center;
+}
+#theme-toggle {
+    background: white;
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+#theme-toggle svg
+{
+    width: 32px;
+    height: 32px;
+
+}
+@import "https://unpkg.com/open-props/easings.min.css";
+
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill);
+  stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill-hover);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun {
+  transform: scale(1.75);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun-beams {
+  opacity: 0;
+}
+
+[data-theme="dark"] .sun-and-moon > .moon > circle {
+  transform: translateX(-7px);
+}
+[data-theme="dark"] .icons svg {
+    color: white;
+}
+[data-theme="dark"] .card svg {
+    color: black;
+}
+
+@supports (cx: 1) {
+  [data-theme="dark"] .sun-and-moon > .moon > circle {
+    cx: 17;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    background-color: black;
+  }
+  [data-theme="light"] body {
+    background-color: #FAFAFA;
+  }
+  [data-theme="dark"] body {
+    background-color: black;
+  }
+  .sun-and-moon > .sun {
+    transition: transform .5s var(--ease-elastic-3);
+  }
+
+  .sun-and-moon > .sun-beams {
+    transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3);
+  }
+
+  .sun-and-moon .moon > circle {
+    transition: transform .25s var(--ease-out-5);
+  }
+
+  @supports (cx: 1) {
+    .sun-and-moon .moon > circle {
+      transition: cx .25s var(--ease-out-5);
+    }
+  }
+
+  [data-theme="dark"] .sun-and-moon > .sun {
+    transition-timing-function: var(--ease-3);
+    transition-duration: .25s;
+    transform: scale(1.75);
+  }
+
+  [data-theme="dark"] .sun-and-moon > .sun-beams {
+    transition-duration: .15s;
+    transform: rotateZ(-25deg);
+  }
+
+  [data-theme="dark"] .sun-and-moon > .moon > circle {
+    transition-duration: .5s;
+    transition-delay: .25s;
+  }
+  /* [data-theme="light"] body {
+    background-color: #FAFAFA;
+}
+ */
+[data-theme="light"] .overlay {
+    background: #FFFFFF;
+}
+
+[data-theme="light"] #content {
+    color: #18181B;
+}
+[data-theme="light"] a {
+    color: blueviolet;
+}
+[data-theme="light"] svg {
+    color: black;
+}
+}
+
+#quote
+{   font-size: 3em;
+    font-weight:bolder;
+    font-family: "Karla", sans-serif;
+    width:max-content;
+    max-width: 800px;
+    
+}
+#intro{
+    font-family: "Karla", sans-serif;
+    font-optical-sizing: auto;
+    font-size :1.2em;
+    line-height: 1.6;
+    font-weight: bold;
+    max-width: 800px;
+    padding-left: 50px;
+    ;
+}
+a{
+    color: lightblue;
+}
+
+.icons {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;           /* Equal spacing between icons */
+    align-items: center;
+    margin-top: 1rem;
+}
+.icons svg
+{
+    
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+    transition: fill 0.2s;
+    display:block;
+}
+
+.card 
+{
+    /* background-color: #FAFAFA; White background for the card */
+    border-radius: 5rem; /* Large rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Subtle, larger shadow */
+    padding: 1.5rem; /* Internal padding */
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Full width on small screens */
+    max-width: 380px; /* Max width for desktop */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Subtle lift effect on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow on hover */
+}
+
+.icon-container {
+    width: 3rem; /* 48px */
+    height: 3rem; /* 48px */
+    border-radius: 9999px; /* Fully rounded for a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-bottom: 1.25rem; /* Space below the icon */
+}
+
+/* Placeholder for actual SVG icons if needed */
+.icon-container svg {
+    width: 2rem; /* 32px */
+    height: 2rem; /* 32px */
+    fill: currentColor; /* Allows color to be controlled by parent's text color */
+}
+
+.card-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: #1a202c; /* gray-900 */
+    margin-bottom: 0.5rem; /* Space below title */
+    line-height: 1.4; /* Adjusted line height for title */
+}
+
+.card-description {
+    font-size: 0.9375rem; /* Slightly larger than text-sm */
+    color: #4a5568; /* gray-600 */
+    line-height: 1.6; /* More relaxed line height */
+    margin-bottom: 1.5rem; /* Space below description */
+    flex-grow: 1; /* Allows description to take up available space */
+}
+
+.card-link {
+    font-size: 0.9375rem;
+    color: #3b82f6; /* blue-500 */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between link text and icon */
+    text-decoration: none;
+    font-weight: 500; /* Medium font weight */
+    transition: color 0.2s ease-in-out;
+}
+
+.card-link:hover {
+    color: #2563eb; /* Darker blue on hover */
+    text-decoration: underline;
+}
+
+.link-icon {
+    /* Placeholder for the link icon (e.g., chain link SVG) */
+    width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
+    fill: currentColor; /* Inherit color from parent link */
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) { /* sm breakpoint */
+    .card {
+        width: calc(50% - 16px); /* Two cards per row with gap */
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .card {
+        width: calc(33.333% - 21.333px); /* Three cards per row with gap */
+    }
+}
