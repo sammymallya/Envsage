@@ -661,7 +661,7 @@ a {
     font-weight: 400;
 }
 .compose-email-button {
-    @apply inline-flex items-center px-4 py-2 rounded-lg font-medium;
+    /* @apply inline-flex items-center px-4 py-2 rounded-lg font-medium; */
     background-color: #000000;
     color: #ffffff;
     text-decoration: none;
@@ -718,4 +718,33 @@ footer>a:hover
         margin-left: 0;
         margin-top: 1rem;
     }
+}
+
+.navbar-center {
+  display: flex;
+  gap: 2.5rem;
+  background: #23232a;
+  border-radius: 2rem;
+  padding: 0.7rem 2.5rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  align-items: center;
+}
+.navbar-center a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.navbar-center a:hover {
+  color: #00e0ff;
+}
+@media (max-width: 700px) {
+  .navbar-center {
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .navbar-center a {
+    font-size: 1rem;
+  }
 }
