@@ -748,3 +748,85 @@ footer>a:hover
     font-size: 1rem;
   }
 }
+
+/* Improved Footer Styles */
+.glass-footer {
+  background: rgba(24, 24, 27, 0.85);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 2rem 2rem 0 0;
+  border-top: 1.5px solid rgba(255,255,255,0.12);
+  margin-top: 3rem;
+  padding: 2.5rem 0 1.5rem 0;
+  width: 100%;
+  position: relative;
+}
+.footer-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #14b8a6, #a855f7, #ec4899);
+  border-radius: 2px;
+  margin: 0 auto 1.5rem auto;
+  opacity: 0.7;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.footer-social {
+  display: flex;
+  gap: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+.footer-social a {
+  color: #fff;
+  background: rgba(36,36,40,0.7);
+  border-radius: 50%;
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: background 0.2s, color 0.2s, transform 0.18s;
+  font-size: 1.5rem;
+}
+.footer-social a:hover {
+  background: linear-gradient(135deg, #14b8a6, #a855f7, #ec4899);
+  color: #fff;
+  transform: translateY(-4px) scale(1.08);
+}
+.footer-social svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+.gradient-text {
+  background: linear-gradient(90deg, #14b8a6, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+@media (max-width: 700px) {
+  .glass-footer {
+    border-radius: 1.2rem 1.2rem 0 0;
+    padding: 1.2rem 0 0.7rem 0;
+  }
+  .footer-content {
+    gap: 0.7rem;
+  }
+  .footer-social {
+    gap: 1.1rem;
+  }
+  .footer-divider {
+    width: 50px;
+    height: 3px;
+  }
+}
