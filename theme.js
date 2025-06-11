@@ -57,4 +57,30 @@ window
     theme.value = isDark ? 'dark' : 'light'
     setPreference()
   })
-        
+
+  /*this part is to fetch the live contributions number from github instead of the static 153 inside my github heatmap */
+  document.addEventListener('DOMContentLoaded', async () => {
+    const contributionsElement = document.getElementById('contributions-text');
+    const githubUsername = 'sammymallya'; // Replace with your GitHub username
+
+    try {
+        // Call your Netlify Function
+        const response = await fetch(`/.netlify/functions/get-contributions?username=${githubUsername}`);
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.totalContributions !== undefined) {
+            contributionsElement.textContent = `${data.totalContributions} contributions in the last year`;
+        } else {
+            contributionsElement.textContent = 'Failed to load contributions.';
+        }
+    } catch (error) {
+        console.error('Error fetching contributions:', error);
+        contributionsElement.textContent = 'Error loading contributions.';
+    }
+});
