@@ -1,4 +1,4 @@
-const fetch = require('node-fetch'); // For making HTTP requests in Node.js
+import fetch from 'node-fetch'; // For making HTTP requests in Node.js
 
 exports.handler = async function(event, context) {
     // Get GitHub username from the query parameters (e.g., ?username=sammymallya)

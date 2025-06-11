@@ -1,5 +1,21 @@
+// {
+//   "dependencies": {
+//     "node-fetch": "^3.3.2"
+//   }
+// }
 {
+  "name": "netlify-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get-contributions.js",
+  "type": "module",  <-- ADD THIS LINE
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2" // Make sure your node-fetch version is 3 or higher
   }
 }
