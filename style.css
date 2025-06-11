@@ -191,8 +191,22 @@ body {
   }
   [data-theme="light"] .resumes
   {
-    
+    background-color: rgb(71, 71, 71);    
   }
+  [data-theme="light"] .resumes:hover{
+    background-color:rgb(0, 0, 0);
+  }
+  [data-theme="light"] .blog:hover{
+    background-color: rgb(194, 194, 194);
+  }
+  [data-theme="light"] .work-icon{
+    background-color: rgb(255, 255, 255);
+  }
+  [data-theme="light"] .work-icon:hover{
+    color: black;
+  }
+
+
 }
 .theme-icon theme-icon-dark {
   color: black;
@@ -414,6 +428,11 @@ a {
   flex-direction: column;
   gap: 1.2rem;
 }
+.resumes:hover
+{
+    border: solid 2px;
+    border-color: whitesmoke;
+}
 
 .work-header {
   display: flex;
@@ -445,12 +464,13 @@ a {
 .work-logo {
   width: 38px;
   height: 38px;
-  border-radius: 50%;
+  border-radius: 1000px;
   background: #23232a;
   object-fit: contain;
   border: 1.5px solid #23232a;
   box-shadow: 0 0 8px #23232a44;
   flex-shrink: 0;
+
 }
 
 .work-details {
@@ -552,21 +572,28 @@ a {
     gap: 1.2rem;
 }
 .heatmap-container {
-    background: #18181b !important;
-    border-radius: 12px !important;
-    padding: 24px 24px 16px 24px !important;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.18) !important;
-    border: 1px solid #23232a !important;
-    max-width: 370px !important;
-    min-width: 340px !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    overflow: visible !important;
-    color: #E2E2E2 !important;
-    margin: 0 auto !important;
+    background: #18181b ;
+    border-radius: 12px ;
+    padding: 24px 24px 16px 24px ;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18) ;
+    max-width: 370px ;
+    min-width: 340px ;
+    width: 100% ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: flex-start ;
+    justify-content: center ;
+    overflow: visible ;
+    color: #E2E2E2 ;
+    margin: 0 auto ;
+    margin-top: 5px;
+}
+.heatmap-container:hover
+{
+    border: 2px solid;
+    border-color: whitesmoke;
+
+
 }
 
 .card-header {
@@ -588,6 +615,7 @@ a {
     height: 22px;
     fill: #E2E2E2;
     flex-shrink: 0;
+    border-radius: 1000px;
 }
 
 .header-title {
@@ -610,15 +638,15 @@ a {
 }
 
 .github-heatmap-img {
-    width: 100% !important;
-    max-width: 320px !important;
-    height: auto !important;
-    object-fit: contain !important;
-    display: block !important;
-    margin: 0 auto 0.5rem auto !important;
-    border-radius: 8px !important;
-    background: #18181b !important;
-    box-shadow: none !important;
+    width: 100% ;
+    max-width: 320px ;
+    height: auto  ;
+    object-fit: contain  ;
+    display: block  ;
+    margin: 0 auto 0.5rem auto  ;
+    border-radius: 8px  ;
+    background: #18181b  ;
+    box-shadow: none  ;
 }
 
 .contributions-count {
@@ -628,4 +656,66 @@ a {
     width: 100%;
     text-align: left;
     letter-spacing: 0.01em;
+}
+.footer-left-text {
+    font-weight: 400;
+}
+.compose-email-button {
+    @apply inline-flex items-center px-4 py-2 rounded-lg font-medium;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.compose-email-button:hover {
+    background-color: #201f1f;
+    /* Darker red on hover */
+    transform: translateY(-2px);
+    /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+footer>a:hover
+{
+    color:white;
+}
+
+.compose-email-button svg {
+    /* Gmail icon styling */
+    width: 1.25rem;
+    /* Icon size */
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    /* Space between icon and text */
+    fill: currentColor;
+    /* Inherit color from button text */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 640px) {
+
+    /* Tailind 'sm' breakpoint */
+    .main-footer {
+        flex-direction: column;
+        /* Stack items vertically */
+        align-items: flex-start;
+        /* Align all items to the left */
+        padding: 1.5rem 1rem;
+        /* Smaller horizontal padding */
+        gap: 1rem;
+    }
+
+    .compose-email-button {
+        width: 100%;
+        /* Full width button on small screens */
+        justify-content: center;
+        align-items: flex-end;
+        /* Center content within the button */
+        margin-left: 0;
+        margin-top: 1rem;
+    }
 }
