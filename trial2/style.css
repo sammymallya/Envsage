@@ -1,0 +1,39 @@
+body{
+    background-color: black;
+}
+.overlay{
+    background-color: #18181b;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 90vw;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: block;
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: center; */
+}
+.header
+{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+.profile-pic
+{
+    height: 90px;
+    width: 90px;
+    border-radius: 1000px;
+    display: flex;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+.profile-p{
+    object-fit: fill;margin-top: 20px;
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+    object-fit: fill;
+    object-position: center;
+}
