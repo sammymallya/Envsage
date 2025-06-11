@@ -1,0 +1,2 @@
+# Ignore the node_modules folder within netlify/functions
+netlify/functions/node_modules/
