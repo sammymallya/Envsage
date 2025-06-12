@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 // No need to import fetch in Node 18+ on Netlify
 
 export async function handler(event, context) {
