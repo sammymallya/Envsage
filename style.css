@@ -1,3 +1,4 @@
+@import "https://unpkg.com/open-props/easings.min.css";
 body {
   background-color: black;
 }
@@ -81,7 +82,6 @@ body {
   width: 32px;
   height: 32px;
 }
-@import "https://unpkg.com/open-props/easings.min.css";
 
 .sun-and-moon > :is(.moon, .sun, .sun-beams) {
   transform-origin: center;
@@ -809,7 +809,7 @@ footer>a:hover
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
   font-weight: 600;
   font-size: 1.15rem;
   letter-spacing: 0.01em;
@@ -960,7 +960,7 @@ footer>a:hover
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
 }
 [data-theme="light"] .about-main {
   color: #23232a;
