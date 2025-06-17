@@ -1,0 +1,104 @@
+body{
+    background-image: linear-gradient(to right, red, yellow);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    display: flex;
+    width: 1200px;
+    height: 700px;
+    border-radius: 100px;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    
+}
+.left{
+    background-color: rgb(245, 222, 179);
+    width: 50%;
+    height: 100%;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+.right{
+    background-color: rgba(245, 222, 179, 0.744);
+    width: 50%;
+    height: 100%;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+.player
+{
+    display: flex;
+    justify-content: center;
+}
+.active-player{
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+}
+.winner{
+    background-color: lightgreen;
+    box-shadow: 0 0 30px lime;
+}
+.score{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: 10em;
+    color: rgb(216, 6, 41);
+}
+.current-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 200px;
+    width: 200px;
+    background-color: palevioletred;
+    margin: 0 auto;
+    margin-top: 50px;
+
+    border-radius: 25px;
+    color: white;
+    font-family: sans-serif;
+}
+.current-box-title{
+    margin-top: 0;
+    color: white;
+    font-size: 1.5em;
+}
+.dice
+{
+    position: absolute;
+    top: 275px;
+    left: 550px;
+    height: 90px;
+    width: 90px;  
+    border: solid 1px;  
+}
+.button-box{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    max-width: 150px;
+    top: 450px;
+    left: 550px;
+    flex-wrap: wrap;
+}
+#roll-dice{
+    height: 40px;
+    width: 120px;
+    background-color: purple;
+    border-radius: 5px;
+}
+#hold{
+    margin-top: 20px;
+}
+#restart{
+    margin-top: 20px;
+}
