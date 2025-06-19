@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-reader</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- for bootstrap css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="item searchbar" data-mdb-input-init">
+            <input type="search" placeholder="Search" class="search-input" />
+            <svg class="search-icon" viewBox="0 0 24 24">
+                <path d="M21 21l-4.35-4.35m1.44-5.15a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2"
+                    fill="none" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>        
+        </div>
+
+        <!-- DIV2 Hourly Forecast -->
+        <div class="item hourlyForecast">
+            <div class="hourly-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="clock-icon" class="bi bi-clock"
+                    viewBox="0 0 16 16">
+                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />            </svg>
+                <span id="Hourly-title">Hourly Forecast</span>
+            </div>
+            <!-- <hr class="divider"> -->
+        </div>
+
+        <!-- DIV 3: Rainy Day! -->
+        <div class="item rainyDay">
+            <div class="rainytemp">
+                <p id="temp">10° </p>
+                <p id="dayDeets">Rainy Day</p>
+            </div>
+            <p id="dayText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos inventore voluptatibus id explicabo quibusdam eius a animi, et delectus dolore?</p>
+            <div class="grid-deets">
+                <div class="feelsLike deetcard">
+                    <div class="deetscardtitle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-thermometer-half"
+                            viewBox="0 0 16 16">
+                            <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
+                            <path
+                                d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
+                            </svg>  
+                        <p>FEELS LIKE</p>
+                    </div>
+
+                </div>
+
+                <div class="precipitation deetcard">
+
+                </div>
+
+                <div class="visibility deetcard">
+
+                </div>
+
+                <div class="humidity deetcard">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="item tenDayForecast"></div>
+        <div class="item uv"></div>
+        <div class="item wind"></div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

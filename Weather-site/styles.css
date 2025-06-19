@@ -1,0 +1,265 @@
+body,html{
+    min-height: 100vh;
+    background-image: url(resources/pexels-forest-road.jpg);
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+.grid-container{
+    display: grid;
+    max-width: 92vw;
+    /* min-height: 100vh; */
+    max-height: 100vh;
+    height: 96vh;
+    /* overflow: auto; */
+    grid-template-columns: 40% 30% 30%;
+    grid-template-rows: 30px repeat(3,1fr);
+    margin: 20px;
+    gap: 26px;
+    /* background-color: black; */
+}
+
+.searchbar{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.075);
+    border-radius: 20px;
+
+    grid-row: 1 ;
+    grid-column: 1;
+}
+
+.search-input {
+    width: 100%;
+    padding-right: 2.5rem;
+    padding-left: 20px;
+    /* space for icon */
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, 0.605);
+    font-size: 1rem;
+
+    /* Prevent autofill styling in WebKit browsers */
+    transition: background-color 100000s ease-in-out 0s;
+}
+
+.search-input::placeholder {
+    color: inherit;
+    opacity: 0.8;
+}
+
+/* Autofill background override for webkit */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: inherit !important;
+}
+
+/* Search Icon */
+.search-icon {
+    position: absolute;
+    right: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    pointer-events: none;
+    color: currentColor;
+}
+
+
+/* DIV2 styling starts */
+.hourlyForecast{
+    background-color: rgba(255, 255, 255, 0.075);
+    grid-row:1/span 2;
+    grid-column: 2/span 2;
+    padding: 5px;
+    max-width: 60vw;
+    border-radius: 10px;
+    align-items: center;
+    padding-left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.hourly-title>svg{
+    margin-right: 5px;
+    align-self: center;
+}
+.hourly-title{
+    display: flex;
+    margin: 3px;
+    flex-direction: row;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    padding: 2px;
+}
+.divider {
+    border: none;
+    border-top: 3px solid rgb(0, 0, 0);
+    margin: 8px 0; 
+    color: white;
+}
+.forecast-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 10px;
+    width: 100%;
+    padding: 0.5rem 0;
+    overflow-x: hidden;
+    align-items: stretch;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.hour-card {
+    background: rgba(255, 255, 255, 0.789);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 0.5rem 0.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    border: 1px solid rgba(255,255,255,0.18);
+    transition: box-shadow 0.2s;
+    width: 100%;
+    max-width: 120px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+.hourly-title,.divider{
+    color: black;
+    background-color:rgba(255, 255, 255, 0.789) ;
+    ;
+}
+.hour-card.current-card {
+    border: 2px solid #2196f3;
+    box-shadow: 0 4px 16px rgba(33,150,243,0.08);
+}
+
+.hour-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0.5rem 0;
+    object-fit: contain;
+    display: block;
+}
+
+.hour-time, .hour-temp {
+    font-weight: 500;
+    color: #000000;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    margin: 4px 0;
+    font-size: 1rem;
+}
+
+.rainyDay{
+    background-color: rgba(255, 255, 255, 0.075);
+    grid-row: 2/span 3;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 18px 18px 18px;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-height: 0;
+    min-width: 0;
+    height: 100%;
+    width: 100%;
+}
+.rainytemp{
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 8px 0;
+    padding: 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+#temp{
+    font-size: 3.5em;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+#dayDeets{
+    font-size: 1.3em;
+    margin: 0 0 4px 0;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+#dayText{
+    color: #e0e0e0;
+    text-align: center;
+    margin: 0 0 18px 0;
+    font-size: 0.8em;
+    font-weight: 400;
+    line-height: 1.3;
+    padding: 0;
+    width: 100%;
+    max-width: 95%;
+}
+.grid-deets{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: 100%;
+    align-items: stretch;
+    justify-items: stretch;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.deetcard{
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 10px 10px;
+    font-size: 1.05em;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    min-width: 0;
+    min-height: 0;
+    transition: box-shadow 0.2s;
+    border: 1px solid rgba(255,255,255,0.18);
+    overflow: hidden;
+}
+.deetsCardTitle {
+    display: flex;
+    /* Make it a flex container to arrange icon and text in a line */
+    align-items: center;
+    /* Vertically center the icon and text */
+    justify-content: center;
+    /* Center the icon and text horizontally within divTitle */
+    width: 100%;
+    /* Ensure it spans the full width of the card's content area */
+    margin-bottom: 8px;
+    /* Add some space below the title before the content */
+    padding-bottom: 5px;
+    /* Optional: adds padding within the title area */
+    /* border-bottom: 1px solid rgba(0,0,0,0.1); Optional: subtle separator line */
+}
