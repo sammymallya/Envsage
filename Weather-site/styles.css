@@ -15,14 +15,13 @@ body,html{
     display: grid;
     max-width: 92vw;
     /* min-height: 100vh; */
-    max-height: 100vh;
+    max-height: 95vh;
     height: 96vh;
-    /* overflow: auto; */
     grid-template-columns: 40% 30% 30%;
     grid-template-rows: 30px repeat(3,1fr);
     margin: 20px;
+    /* margin-bottom: 30px; */
     gap: 26px;
-    /* background-color: black; */
 }
 
 .searchbar{
@@ -66,11 +65,14 @@ input:-webkit-autofill {
 /* Search Icon */
 .search-icon {
     position: absolute;
+    z-index: 10;
     right: 0.5rem;
     width: 1.25rem;
     height: 1.25rem;
     pointer-events: none;
     color: currentColor;
+    cursor:pointer;
+    pointer-events: auto;
 }
 
 
@@ -79,90 +81,108 @@ input:-webkit-autofill {
     background-color: rgba(255, 255, 255, 0.075);
     grid-row:1/span 2;
     grid-column: 2/span 2;
-    padding: 5px;
+    padding: 0 18px 18px 18px;
     max-width: 60vw;
-    border-radius: 10px;
-    align-items: center;
-    padding-left: 5px;
+    border-radius: 18px;
+    align-items: stretch;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
+    min-height: 0;
     box-sizing: border-box;
     overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
 }
-.hourly-title>svg{
-    margin-right: 5px;
-    align-self: center;
-}
-.hourly-title{
+.hourly-title {
     display: flex;
-    margin: 3px;
     flex-direction: row;
-    font-size: 1.2rem;
-    border-radius: 15px;
-    padding: 2px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    border-radius: 12px 12px 12px 12px;
+    padding: 10px 0 10px 0;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.702);
+    color: #23272f;
+    font-weight: 600;
+    gap: 10px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.hourly-title > svg {
+    color: #191b21;
+    filter: none;
+}
+#Hourly-title {
+    color: #23272f;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 1.25rem;
+    text-shadow: none;
 }
 .divider {
+    display: none;
     border: none;
-    border-top: 3px solid rgb(0, 0, 0);
-    margin: 8px 0; 
-    color: white;
+    border-top: 2px solid #000000;
+    margin: 0 0 10px 0;
+    color: #2196f3;
+    background: none;
 }
 .forecast-scroll {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 10px;
+    gap: 16px;
     width: 100%;
-    padding: 0.5rem 0;
-    overflow-x: hidden;
+    padding: 0.5rem 0 0.5rem 0;
     align-items: stretch;
     box-sizing: border-box;
-    height: 100%;
+    flex: 1 1 0;
+    overflow: hidden;
+    min-height: 0;
+    max-height: 180px;
+    scrollbar-width: none;
 }
-
+.forecast-scroll::-webkit-scrollbar {
+    display: none;
+}
 .hour-card {
-    background: rgba(255, 255, 255, 0.789);
+    background:  rgba(255, 255, 255, 0.85);
     border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 0.5rem 0.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    padding: 0.7rem 0.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 0;
-    border: 1px solid rgba(255,255,255,0.18);
+    max-width: 110px;
+    border: 1.5px solid #2196f3;
     transition: box-shadow 0.2s;
-    width: 100%;
-    max-width: 120px;
     box-sizing: border-box;
     justify-content: center;
+    height: 150px;
+    overflow: hidden;
+    width: 100%;
 }
-.hourly-title,.divider{
-    color: black;
-    background-color:rgba(255, 255, 255, 0.789) ;
-    ;
-}
-.hour-card.current-card {
-    border: 2px solid #2196f3;
-    box-shadow: 0 4px 16px rgba(33,150,243,0.08);
-}
-
-.hour-icon {
-    width: 40px;
-    height: 40px;
-    margin: 0.5rem 0;
+.hour-card img.hour-icon {
+    width: 48px;
+    height: 48px;
     object-fit: contain;
+    margin: 0.2rem 0 0.4rem 0;
     display: block;
+    filter: drop-shadow(0 2px 8px rgb(1, 98, 176));
 }
-
 .hour-time, .hour-temp {
-    font-weight: 500;
-    color: #000000;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    font-weight: 600;
+    color: #23272f;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.10);
     margin: 4px 0;
     font-size: 1rem;
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
-
 .rainyDay{
     background-color: rgba(255, 255, 255, 0.075);
     grid-row: 2/span 3;
@@ -237,6 +257,7 @@ input:-webkit-autofill {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     padding: 10px 10px;
+    padding-bottom: 8px;
     font-size: 1.05em;
     color: #222;
     display: flex;
@@ -247,19 +268,172 @@ input:-webkit-autofill {
     transition: box-shadow 0.2s;
     border: 1px solid rgba(255,255,255,0.18);
     overflow: hidden;
+    box-sizing: border-box;
 }
 .deetsCardTitle {
     display: flex;
-    /* Make it a flex container to arrange icon and text in a line */
+    flex-direction: row;
     align-items: center;
-    /* Vertically center the icon and text */
-    justify-content: center;
-    /* Center the icon and text horizontally within divTitle */
+    justify-content: flex-start; 
     width: 100%;
-    /* Ensure it spans the full width of the card's content area */
     margin-bottom: 8px;
-    /* Add some space below the title before the content */
     padding-bottom: 5px;
-    /* Optional: adds padding within the title area */
-    /* border-bottom: 1px solid rgba(0,0,0,0.1); Optional: subtle separator line */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    gap: 6px;
+}
+.deetsCardTitle svg,
+.deetsCardTitle .deet-title-text {
+    vertical-align: middle;
+}
+.deet-title-text {
+    font-size: 1em;
+    font-weight: 600;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+}
+.uv{
+    grid-row: 4;
+    grid-column: 2/span 1;
+    background-color: rgba(255, 255, 255, 0.075);
+    border-radius: 15px;
+}
+    
+.wind {
+    grid-row: 4;
+    grid-column: 3/4;
+    background-color: rgba(255, 255, 255, 0.075);
+    border-radius: 15px;
+}
+
+.num
+{
+    font-size: 1.8em;
+    margin :0;
+
+}
+.deetCardContent {
+    font-size: 0.8em;
+    margin-top: 0px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.autocomplete-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.856);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    margin-top: 2px;
+    padding: 0;
+}
+.autocomplete-item {
+    padding: 12px 18px;
+    cursor: pointer;
+    color: #23272f;
+    font-size: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+    background: transparent;
+}
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+.autocomplete-item:hover, .autocomplete-item.active {
+    background: #2196f3;
+    color: #fff;
+}
+
+
+.tenDayForecast{
+    grid-row: 3/span 2;
+    grid-column: 2/span 2;
+    background-color: rgba(255, 255, 255, 0.075) ;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+.tenDay-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    border-radius: 12px 12px 12px 12px;
+    padding: 10px 0 10px 0;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.702);
+    color: #23272f;
+    font-weight: 600;
+    gap: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.tenDay-scroll {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box;
+    height: 100%;
+    gap: 1.5%; /* This will create the space between cards */
+}
+.tenDay-card {
+    flex: 0 0 18%; /* width: 18%, do not grow or shrink */
+    max-width: 19%;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border: 1.5px solid #2196f3;
+    padding: 0.7rem 0.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: calc(100% - 20px);
+    margin-bottom: 20px;
+}
+.tenDay-date {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #23272f;
+    text-align: center;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    line-height: 1.1;
+}
+.tenDay-day {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2196f3;
+    display: block;
+}
+.tenDay-card img.day-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    margin: 0.2rem 0 0.4rem 0;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgb(1, 98, 176));
+}
+.tenDay-temp {
+    font-weight: 700;
+    color: #23272f;
+    font-size: 1.1rem;
+    margin-top: 2px;
+    text-align: center;
+    letter-spacing: 0.5px;
 }
