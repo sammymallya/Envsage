@@ -1,7 +1,11 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
+
+const jwtSecretKey = process.env.JWT_SECRET;
 
 const emailValidator  = require('../validators/email_val');
+const tokenSigner = require('../validators/sign_jwt');
 
 
 exports.signup = async (req,res) => {
@@ -61,8 +65,12 @@ exports.login = async (req,res) => {
                 return;
             }
             if(result){
-                console.log("Passwords match");
-                res.status(200).send("Login succesful!");
+                // console.log("Passwords match");
+                var signedToken = tokenSigner(storedUser,jwtSecretKey);
+                res.status(200).json({
+                    message: "Login Succesful",
+                    token: signedToken
+                });
             }else{
                 console.log("Passwords don't match");
                 res.status(410).send("Credentials do not match. Try again!");
