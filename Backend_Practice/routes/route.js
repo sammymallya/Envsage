@@ -8,5 +8,5 @@ router.get('/fetchAll',verifyToken,userController.fetchAllUsers);
 router.get('/fetchUser',verifyToken,userController.fetchByEmail);
 router.post('/login',userController.login);
 
-router.get('/update',verifyToken,userController.update);
+router.patch('/update',verifyToken,userController.update);
 module.exports = router;
