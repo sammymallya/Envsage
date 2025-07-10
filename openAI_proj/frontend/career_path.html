@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your AI Career Path</title>
+</head>
+<body class="dashboard-body light-theme">
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Your Personalized Career Path</h1>
+            <button id="theme-toggle" class="theme-toggle-btn">🌙 Dark Mode</button>
+        </header>
+        <div id="career-sections"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+    // Theme toggle logic (same as dashboard.html)
+    const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    function setTheme(theme) {
+        root.classList.remove('light-theme', 'dark-theme');
+        root.classList.add(theme);
+        if(theme === 'dark-theme') {
+            themeToggle.textContent = '☀️ Light Mode';
+        } else {
+            themeToggle.textContent = '🌙 Dark Mode';
+        }
+    }
+    setTheme('light-theme');
+    themeToggle.addEventListener('click', () => {
+        if(root.classList.contains('light-theme')) {
+            setTheme('dark-theme');
+        } else {
+            setTheme('light-theme');
+        }
+    });
+
+    // Parse and display AI result
+    function parseSections(text) {
+        // Split by numbered sections (1. **Title**:)
+        const sectionRegex = /\n?\s*(\d+)\. \*\*(.*?)\*\*:([\s\S]*?)(?=(?:\n\s*\d+\. \*\*|$))/g;
+        let match;
+        const sections = [];
+        while ((match = sectionRegex.exec(text)) !== null) {
+            sections.push({
+                number: match[1],
+                title: match[2].trim(),
+                content: match[3].trim()
+            });
+        }
+        return sections;
+    }
+    $(function() {
+        const aiText = localStorage.getItem('career_ai_result');
+        if (!aiText) {
+            $('#career-sections').html('<div class="ai-results">No career guidance data found. Please submit your profile first.</div>');
+            return;
+        }
+        const sections = parseSections(aiText);
+        let html = '';
+        sections.forEach(sec => {
+            html += `<section class="career-section">
+                <h2>${sec.number}. ${sec.title}</h2>
+                <div class="career-content">${sec.content.replace(/\n/g, '<br>')}</div>
+            </section>`;
+        });
+        $('#career-sections').html(html);
+    });
+    </script>
+</body>
+</html>

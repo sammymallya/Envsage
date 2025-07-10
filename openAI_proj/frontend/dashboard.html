@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Dashboard - AI Career Guidance</title>
+</head>
+<body class="dashboard-body light-theme">
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Welcome to AI Career Guidance</h1>
+            <button id="theme-toggle" class="theme-toggle-btn">🌙 Dark Mode</button>
+        </header>
+        <form id="user-profile-form" class="profile-form">
+            <h2>Tell us about yourself</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="10" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer_not">Prefer not to say</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="education">Highest Education</label>
+                    <select id="education" name="education" required>
+                        <option value="">Select</option>
+                        <option value="highschool">High School</option>
+                        <option value="bachelors">Bachelors</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="future-education">Interested in Masters/PhD?</label>
+                    <select id="future-education" name="future-education" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="maybe">Maybe</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="skills">Current Tech Skills</label>
+                    <input type="text" id="skills" name="skills" placeholder="e.g. Python, React, SQL" required>
+                </div>
+                <div class="form-group">
+                    <label for="hobbies">Hobbies</label>
+                    <input type="text" id="hobbies" name="hobbies" placeholder="e.g. Reading, Gaming, Music" required>
+                </div>
+                <div class="form-group">
+                    <label for="interests">Interests</label>
+                    <input type="text" id="interests" name="interests" placeholder="e.g. AI, Web Dev, Data Science" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group wide">
+                    <label for="personality">Personality Description</label>
+                    <textarea id="personality" name="personality" rows="3" placeholder="Describe yourself in a few sentences..." required></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group wide">
+                    <label for="goals">Career Goals / Preferences</label>
+                    <textarea id="goals" name="goals" rows="2" placeholder="What are your career aspirations?" required></textarea>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit Profile</button>
+        </form>
+        <div id="loader"></div>
+        <div id="ai-results" class="ai-results" style="display:none;"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+    // Theme toggle logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    function setTheme(theme) {
+        root.classList.remove('light-theme', 'dark-theme');
+        root.classList.add(theme);
+        if(theme === 'dark-theme') {
+            themeToggle.textContent = '☀️ Light Mode';
+        } else {
+            themeToggle.textContent = '🌙 Dark Mode';
+        }
+    }
+    // Set initial theme
+    setTheme('light-theme');
+    themeToggle.addEventListener('click', () => {
+        if(root.classList.contains('light-theme')) {
+            setTheme('dark-theme');
+        } else {
+            setTheme('light-theme');
+        }
+    });
+    </script>
+    <script src="./js/submit-profile.js"></script>
+</body>
+</html>

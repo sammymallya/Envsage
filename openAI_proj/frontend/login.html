@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login - Envsage</title>
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form">
+            <h2>Sign In</h2>
+            <div class="input-group">
+                <label for="username">Email</label>
+                <input type="text" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+            </div>
+            <div class="login_msg" id="login_msg">
+                <p>Login Failed. Try Again!</p>
+            </div>
+            <button type="submit" id="loginBTN" class="login-btn">Sign In</button>
+            <div class="login-links">
+                <a href="#" class="forgot-link">Forgot password?</a>
+                <span>|</span>
+                <a href="./signup.html" class="signup-link">Sign up</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./js/login.js" defer></script>
+</body>
+</html>

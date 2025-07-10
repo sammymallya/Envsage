@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up - Envsage</title>
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form">
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <label for="signup-username">Username</label>
+                <input type="text" id="signup-username" name="username" required autocomplete="username">
+            </div>
+            <div class="input-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" name="email" required autocomplete="email">
+            </div>
+            <div class="input-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="password" required autocomplete="new-password">
+            </div>
+            <div class="input-group">
+                <label for="signup-confirm-password">Confirm Password</label>
+                <input type="password" id="signup-confirm-password" name="confirm-password" required autocomplete="new-password">
+            </div>
+            <button type="submit" id="signup-btn" class="login-btn">Sign Up</button>
+            <div class="login-links">
+                <a href="./login.html" class="signup-link">Already have an account? Log in</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./js/signup.js"></script>
+</body>
+</html> 
