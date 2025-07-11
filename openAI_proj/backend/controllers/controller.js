@@ -97,27 +97,59 @@ exports.submitProfile = async (req,res) =>{
 
         ---
 
-        ### Please respond with the following sections in a json format (for eg:{"summary":"summary section content", "strengths":"strengths section content"}):
+        ### Please respond with the following sections in a json object (for eg:{"summary":"summary section content", "strengths":"strengths section content"}):
         1. **Summary of User Profile**: Brief overview of the user's background and aspirations.
-        2. **Strengths & Strong Areas**: Based on education, skills, and personality.
-        3. **Weaknesses / Areas for Improvement**: Suggest improvements or upskilling.
+        2. **Strengths and Strong Areas**: Based on education, skills, and personality.
+        3. **Weaknesses and Areas for Improvement**: Suggest improvements or upskilling.
         4. **Best Skills to Learn Next**: Based on current interests, future goals, and industry trends.
         5. **Recommended Career Domains**: Mention 2–4 suitable domains with reasoning.
         6. **Job Role Suggestions**: Specific job roles (with titles) in each domain.
         7. **Good Colleges or Courses**: Suggest institutions or platforms for further studies (Bachelors, Masters, PhD, or certifications).
-        8. **Short-term Plan (0–1 years)**: Skills, internships, or certifications to pursue now.
-        9. **Long-term Plan (2–5 years)**: Job progression, higher studies, or specialization routes.
+        8. **Short-term Plan **: Skills, internships, or certifications to pursue now.(in a span of next 1 year)
+        9. **Long-term Plan **: Job progression, higher studies, or specialization routes.(2–5 years)
         10. **Final Advice**: Motivational or directional advice based on the user profile.
 
-        Be structured, clear, and professional. Use bullet points where appropriate.
+        Return only pure JSON. Do not use markdown symbols like ** or -. Use plain text and clear sentence structure instead of bullets.
+        Respond only with a JSON object using the following exact keys:
+
+        {
+        "summary_of_user_profile": "",
+        "strengths_and_strong_areas": "",
+        "weaknesses_areas_for_improvement": "",
+        "best_skills_to_learn_next": "",
+        "recommended_career_domains": "",
+        "job_role_suggestions": "",
+        "good_colleges_or_courses": "",
+        "short_term_plan": "",
+        "short_term_plan_details": "",
+        "long_term_plan": "",
+        "long_term_plan_details": "",
+        "final_advice": ""
+        }
+
+        Ensure that the field names match exactly. Do not rename or modify any keys.
         `;
     const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
     contents: prompt,
     });
     // window.location.href = "http://127.0.0.1:5504/openAI_proj/frontend/career_path.html"
-    const text = response.candidates[0].content.parts[0].text;
-    fileUpdater(text);
-    console.log(text);
-    res.status(200).send(text);
+    const rawText = response.candidates[0].content.parts[0].text;
+    const cleanText = rawText.replace(/```json\n?/, '').replace(/```$/, '');
+    fileUpdater(cleanText);
+    res.status(200).send(cleanText);
+}
+
+
+exports.fetchData = async (req,res)=> {
+    const fs = require('fs');
+
+    fs.readFile('/Users/sammy/Desktop/Coding/GitHub/Envsage/openAI_proj/backend/storage/data.json', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading file:', err);
+        return;
+    }
+    // console.log('File content:', data);
+    res.status(200).send(data);
+    });
 }

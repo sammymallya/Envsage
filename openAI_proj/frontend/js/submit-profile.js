@@ -24,7 +24,7 @@ profileForm.on("submit", async function(event) {
             },
             body: JSON.stringify(obj),
         });
-        // Redirect to career_path.html as soon as data is received
+        $('#loader-overlay').hide(); // Hide loader overlay after receiving data
         window.location.href = 'career_path.html';
     } catch (err) {
         $('#loader-overlay').hide(); // Hide loader on error

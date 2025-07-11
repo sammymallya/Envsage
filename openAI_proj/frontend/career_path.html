@@ -37,37 +37,65 @@
         }
     });
 
-    // Parse and display AI result
-    function parseSections(text) {
-        // Split by numbered sections (1. **Title**:)
-        const sectionRegex = /\n?\s*(\d+)\. \*\*(.*?)\*\*:([\s\S]*?)(?=(?:\n\s*\d+\. \*\*|$))/g;
-        let match;
-        const sections = [];
-        while ((match = sectionRegex.exec(text)) !== null) {
-            sections.push({
-                number: match[1],
-                title: match[2].trim(),
-                content: match[3].trim()
-            });
-        }
-        return sections;
-    }
-    $(function() {
-        const aiText = localStorage.getItem('career_ai_result');
-        if (!aiText) {
-            $('#career-sections').html('<div class="ai-results">No career guidance data found. Please submit your profile first.</div>');
-            return;
-        }
-        const sections = parseSections(aiText);
-        let html = '';
-        sections.forEach(sec => {
-            html += `<section class="career-section">
-                <h2>${sec.number}. ${sec.title}</h2>
-                <div class="career-content">${sec.content.replace(/\n/g, '<br>')}</div>
-            </section>`;
-        });
-        $('#career-sections').html(html);
-    });
     </script>
+    <script>
+    async function fetchData (){
+      try{
+        const rawData = await fetch('http://localhost:3000/api/fetchdata');
+        const careerData = await rawData.json();
+      return careerData;
+      }catch(err){
+        console.log("fetch error: \n", err);
+        return null;
+      }
+    }
+    async function init() {
+    try {
+      const careerData = await fetchData();
+      console.log("Career data ready:", careerData);
+
+
+      //now careerData is safe to use
+      function createSection(title, content) {
+      const section = $('<section>').addClass('career-section');
+      section.append($('<h2>').text(title));
+
+      if (Array.isArray(content)) {
+        const ul = $('<ul>');
+        content.forEach(item => {
+          ul.append($('<li>').html(item));
+        });
+        section.append(ul);
+      } else {
+        section.append($('<p>').html(content));
+      }
+
+      return section;
+    }
+
+    $(document).ready(function () {
+      const container = $('#career-sections');
+
+      container.append(createSection("Summary of User Profile", careerData.summary_of_user_profile));
+      container.append(createSection("Strengths", careerData.strengths_and_strong_areas));
+      container.append(createSection("Areas for Improvement", careerData.weaknesses_areas_for_improvement));
+      container.append(createSection("Best Skills to Learn Next", careerData.best_skills_to_learn_next));
+      container.append(createSection("Recommended Career Domains", careerData.recommended_career_domains));
+      container.append(createSection("Job Role Suggestions", careerData.job_role_suggestions));
+      container.append(createSection("Good Colleges or Courses", careerData.good_colleges_or_courses));
+      container.append(createSection("Short-Term Plan " ,careerData.short_term_plan_details));
+      container.append(createSection("Long-Term Plan " , careerData.long_term_plan_details));
+      container.append(createSection("Final Advice", careerData.final_advice));
+    });
+      // Now safely use careerData
+    } catch (err) {
+      console.log("Error occurred in fetching data: \n", err);
+    }
+  }
+
+  init();
+
+    
+</script>
 </body>
 </html>
